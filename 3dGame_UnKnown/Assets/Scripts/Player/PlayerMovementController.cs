@@ -1,13 +1,23 @@
-﻿using UnityEngine.InputSystem;
+using UnityEngine.InputSystem;
 using UnityEngine;
+using System.Collections;
 
 public class PlayerMovementController : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed;
-    private bool isRun = false;
     private Vector2 curMovementInput;
+
+    [Header("Rush")]
+    public float rushDuration;
+    public float rushSpeed;
+    public float rushCost;
+    private Coroutine rushCoroutine;
+    private bool isRushing;
+
+    [Header("Jump")]
     public float jumpForce;
+    public float jumpCost;
     public LayerMask groundLayerMask;
 
     private Rigidbody rigidbody;
@@ -34,21 +44,29 @@ public class PlayerMovementController : MonoBehaviour
         }
     }
 
-    public void OnRunInput(InputAction.CallbackContext context)
+    public void OnRushInput(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Performed)
+        if (context.phase == InputActionPhase.Started)
         {
-            isRun = true;
+            if (!isRushing && CharacterManager.Instance.Player.Condition.UseStamina(rushCost)) 
+            {
+                rushCoroutine = StartCoroutine(Rush());
+            }
         }
-        else if (context.phase == InputActionPhase.Canceled)
-        {
-            isRun = false;
-        }
+    }
+
+    IEnumerator Rush()
+    {
+        isRushing = true;
+        moveSpeed += rushSpeed;
+        yield return new WaitForSecondsRealtime(rushDuration);
+        isRushing = false;
+        moveSpeed -= rushSpeed;
     }
 
     public void OnJumpInput(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Started && IsGrounded())
+        if (context.phase == InputActionPhase.Started && IsGrounded() && CharacterManager.Instance.Player.Condition.UseStamina(jumpCost))
         {
             rigidbody.AddForce(Vector2.up * jumpForce, ForceMode.Impulse);
         }
@@ -58,8 +76,6 @@ public class PlayerMovementController : MonoBehaviour
     {
         Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
         dir *= moveSpeed;
-        if (isRun)
-            dir *= 1.5f;
         dir.y = rigidbody.velocity.y;
         rigidbody.velocity = dir;
     }

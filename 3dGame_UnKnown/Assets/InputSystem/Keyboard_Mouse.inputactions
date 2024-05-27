@@ -33,7 +33,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Run",
+                    "name": "Rush",
                     "type": "Button",
                     "id": "a2a34cd9-f5a4-4a25-82cc-d25198ff3d98",
                     "expectedControlType": "Button",
@@ -136,7 +136,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Run",
+                    "action": "Rush",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
