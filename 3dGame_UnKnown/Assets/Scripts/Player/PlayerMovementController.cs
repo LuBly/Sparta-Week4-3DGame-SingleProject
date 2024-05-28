@@ -46,6 +46,10 @@ public class PlayerMovementController : MonoBehaviour
 
     private void Move()
     {
+        if (!IsGrounded())
+        {
+            return;
+        }
         Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
         dir *= moveSpeed;
         dir.y = rigidbody.velocity.y;
