@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Water : MonoBehaviour
+public class Fence : MonoBehaviour
 {
     public int Damage;
     public float DamageRate;
@@ -31,19 +31,19 @@ public class Water : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if(other.gameObject.TryGetComponent(out IDamagable damagable))
+        if(collision.gameObject.TryGetComponent(out IDamagable damagable))
         {
             m_damageObjects.Add(damagable);
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnCollisionExit(Collision collision)
     {
-        if (other.gameObject.TryGetComponent(out IDamagable damagable))
+        if (collision.gameObject.TryGetComponent(out IDamagable damagable))
         {
-            m_damageObjects.Add(damagable);
+            m_damageObjects.Remove(damagable);
         }
     }
 }

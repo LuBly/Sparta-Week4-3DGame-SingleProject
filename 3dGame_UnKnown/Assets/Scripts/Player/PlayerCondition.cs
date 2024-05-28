@@ -13,7 +13,7 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     Condition health { get { return UiCondition.Health; } }
     Condition stamina { get { return UiCondition.Stamina; } }
 
-    public event Action onTakeDamage;
+    public event Action OnTakeDamage;
 
     private void Update()
     {
@@ -46,6 +46,6 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     public void TakePhysicalDamage(int damageAmount)
     {
         health.Subtract(damageAmount);
-        onTakeDamage?.Invoke();
+        OnTakeDamage?.Invoke();
     }
 }
