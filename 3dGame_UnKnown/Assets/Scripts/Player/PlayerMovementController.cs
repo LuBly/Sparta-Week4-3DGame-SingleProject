@@ -84,9 +84,9 @@ public class PlayerMovementController : MonoBehaviour
         }
     }
 
-    public void Jump(float force)
+    public void JumpForward(float force)
     {
-        rigidbody.AddForce(Vector2.up * force, ForceMode.Impulse);
+        rigidbody.AddForce((Vector2.up + (Vector2)transform.forward) * force, ForceMode.Impulse);
     }
 
     bool IsGrounded()

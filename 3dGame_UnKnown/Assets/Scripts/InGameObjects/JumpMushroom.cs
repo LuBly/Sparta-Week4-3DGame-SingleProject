@@ -7,7 +7,7 @@ public class JumpMushroom : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent(out PlayerMovementController playerMovementController))
         {
-            playerMovementController.Jump(jumpForce);
+            playerMovementController.JumpForward(jumpForce);
         }
     }
 }
