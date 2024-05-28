@@ -12,6 +12,9 @@ public class PlayerLookController : MonoBehaviour
 
     private Vector2 mouseDelta;
 
+    [Header("Camera")]
+    public GameObject ThirdPOV;
+
     [HideInInspector]
     public bool canLook = true;
 
@@ -31,6 +34,11 @@ public class PlayerLookController : MonoBehaviour
     public void OnLookInput(InputAction.CallbackContext context)
     {
         mouseDelta = context.ReadValue<Vector2>();
+    }
+
+    public void OnPOVToggleInput(InputAction.CallbackContext context)
+    {
+        ThirdPOV.SetActive(!ThirdPOV.activeSelf);
     }
 
     void CameraLook()
