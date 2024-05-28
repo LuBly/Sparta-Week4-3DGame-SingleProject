@@ -6,9 +6,11 @@ public class Condition : MonoBehaviour
     [SerializeField] private float curValue;
     [SerializeField] private float maxValue;
     [SerializeField] private float startValue;
+    [SerializeField] private float regenRate;
     [SerializeField] private Image uiBar;
 
     public float CurValue => curValue;
+    public float RegenRate => regenRate;
 
     private void Start()
     {

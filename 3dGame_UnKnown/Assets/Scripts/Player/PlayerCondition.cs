@@ -17,7 +17,7 @@ public class PlayerCondition : MonoBehaviour, IDamagable
 
     private void Update()
     {
-
+        stamina.Add(stamina.RegenRate * Time.deltaTime);
     }
 
     public bool UseStamina(float amount)
