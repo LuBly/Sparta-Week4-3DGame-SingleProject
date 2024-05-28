@@ -44,6 +44,14 @@ public class PlayerMovementController : MonoBehaviour
         }
     }
 
+    private void Move()
+    {
+        Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
+        dir *= moveSpeed;
+        dir.y = rigidbody.velocity.y;
+        rigidbody.velocity = dir;
+    }
+
     public void OnRushInput(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started)
@@ -72,12 +80,9 @@ public class PlayerMovementController : MonoBehaviour
         }
     }
 
-    private void Move()
+    public void Jump(float force)
     {
-        Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
-        dir *= moveSpeed;
-        dir.y = rigidbody.velocity.y;
-        rigidbody.velocity = dir;
+        rigidbody.AddForce(Vector2.up * force, ForceMode.Impulse);
     }
 
     bool IsGrounded()
