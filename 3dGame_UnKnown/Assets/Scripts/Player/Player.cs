@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     public PlayerCondition Condition;
     public PlayerMovementController MovementController;
     public PlayerLookController LookController;
+    public PlayerEquipmentController equipmentController;
 
     public ItemData ItemData;
     public Action addItem;
@@ -16,6 +17,7 @@ public class Player : MonoBehaviour
         CharacterManager.Instance.Player = this;
         Condition = GetComponent<PlayerCondition>();
         MovementController = GetComponent<PlayerMovementController>();
-        LookController = GetComponent<PlayerLookController>(); 
+        LookController = GetComponent<PlayerLookController>();
+        equipmentController = GetComponent<PlayerEquipmentController>();
     }
 }

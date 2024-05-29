@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Interaction : MonoBehaviour
+public class InteractionManager : MonoBehaviour
 {
     private float chaeckRate = 0.05f;
     private float lastCheckTime;
@@ -26,7 +26,6 @@ public class Interaction : MonoBehaviour
         if (Time.time - lastCheckTime > chaeckRate) 
         {
             lastCheckTime = Time.time;
-
             Ray ray = camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
             RaycastHit hit;
 

@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class ItemObject : MonoBehaviour, IInteractable
 {
-    [SerializeField] private ItemData data;
+    [SerializeField] protected ItemData data;
     public string GetInteractPrompt()
     {
-        string promptStr = $"{data.displayName}\n{data.description}";
+        string promptStr = $"[G] {data.displayName}\n{data.description}";
         return promptStr;
     }
 
@@ -18,4 +18,6 @@ public class ItemObject : MonoBehaviour, IInteractable
         Destroy(gameObject);
     }
 }
+
+
 
