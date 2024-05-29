@@ -33,9 +33,8 @@ public class PlayerEquipmentController : MonoBehaviour
         };
     }
 
-    public void OnEquipInput(InputAction.CallbackContext context)
+    public void EquipItem(EquipItemData equipItemData)
     {
-        EquipItemData equipItemData = CharacterManager.Instance.Player.ItemData as EquipItemData;
         if(equipItemData != null)
         {
             //equip함수 수행

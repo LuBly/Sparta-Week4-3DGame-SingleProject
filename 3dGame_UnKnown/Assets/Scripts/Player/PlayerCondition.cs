@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public interface IDamagable
@@ -14,10 +15,59 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     Condition stamina { get { return UiCondition.Stamina; } }
 
     public event Action OnTakeDamage;
+    
+    Coroutine staminaCoroutine, healthCoroutine;
 
     private void Update()
     {
         stamina.Add(stamina.RegenRate * Time.deltaTime);
+    }
+
+    public void UseItem(ConsumableItemData consumableItemData)
+    {
+        foreach (ConsumableItemDataDetail itemData in consumableItemData.consumableValues)
+        {
+            switch (itemData.type)
+            {
+                case ConsumableType.Stamina:
+                    if (staminaCoroutine != null) 
+                    {
+                        StopCoroutine(staminaCoroutine);
+                    }
+                    staminaCoroutine = StartCoroutine(AddStamina(itemData));
+                    break;
+
+                case ConsumableType.Health:
+                    if(healthCoroutine != null)
+                    {
+                        StopCoroutine(healthCoroutine);
+                    }
+                    healthCoroutine = StartCoroutine(AddHealth(itemData));
+                    break;
+            }
+        }
+    }
+
+    IEnumerator AddStamina(ConsumableItemDataDetail itemData)
+    {
+        int count = 0;
+        while(count < itemData.activeCount)
+        {
+            stamina.Add(itemData.value);
+            count++;
+            yield return new WaitForSecondsRealtime(itemData.activeDelay);
+        }
+    }
+
+    IEnumerator AddHealth(ConsumableItemDataDetail itemData)
+    {
+        int count = 0;
+        while (count < itemData.activeCount)
+        {
+            health.Add(itemData.value);
+            count++;
+            yield return new WaitForSecondsRealtime(itemData.activeDelay);
+        }
     }
 
     public bool UseStamina(float amount)

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7458558345613715149}
   - component: {fileID: 4934949646396335726}
   - component: {fileID: 1521653836344384785}
-  - component: {fileID: 6830340433355774240}
+  - component: {fileID: 1471480160306369442}
   m_Layer: 6
   m_Name: Mushroom
   m_TagString: Untagged
@@ -134,7 +134,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &6830340433355774240
+--- !u!114 &1471480160306369442
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3520980780459892137}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98979730d708a6d44b9dfa5e3ec55e3d, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d270ec7a8d1ef54eb2845204b9e0d56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 87a6d293506752f4eb2d82fa714986d8, type: 2}

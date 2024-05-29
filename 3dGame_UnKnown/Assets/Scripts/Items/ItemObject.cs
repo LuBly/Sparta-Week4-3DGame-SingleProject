@@ -14,8 +14,14 @@ public class ItemObject : MonoBehaviour, IInteractable
     public void OnInteract()
     {
         CharacterManager.Instance.Player.ItemData = data;
-        CharacterManager.Instance.Player.addItem?.Invoke();
+        UseItem();
+        //CharacterManager.Instance.Player.useItem?.Invoke();
         Destroy(gameObject);
+    }
+
+    protected virtual void UseItem()
+    {
+
     }
 }
 

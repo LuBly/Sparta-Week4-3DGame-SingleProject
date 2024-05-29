@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     public PlayerEquipmentController equipmentController;
 
     public ItemData ItemData;
-    public Action addItem;
+    public Action useItem;
 
     private void Awake()
     {
