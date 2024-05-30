@@ -26,3 +26,8 @@
 3. 장비 장착
     - 무기(Sword)를 획득할 경우 플레이어의 우측 손 위치에 장착됩니다.
     - 스텟 변화 X, 휘두르기 X
+
+### 시연 영상 및 세부내역
+1. https://profilehyunho.notion.site/3D-Unity-f850f89e7e6b4b35a556324405f48577?pvs=4
+2. https://profilehyunho.notion.site/3D-Unity-2-05ae58d1ebe24637a362e92f0e90581b?pvs=4
+3. https://profilehyunho.notion.site/3D-Unity-3-a7dd3dc87d1c4c3f8ed02c3fd497a4e7?pvs=4
